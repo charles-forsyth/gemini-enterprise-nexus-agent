@@ -1,8 +1,5 @@
-from google.adk import Agent
-from google.adk.apps import App
-from google.adk.plugins.logging_plugin import LoggingPlugin
-
-from gemini_enterprise_nexus_agent.tools.interfaces import (
+from google.adk.agents import Agent
+from tools import (
     nexus_search,
     nexus_dossier,
     nexus_tree,
@@ -18,6 +15,7 @@ from gemini_enterprise_nexus_agent.tools.interfaces import (
     nexus_people_tag,
 )
 
+# --- Intelligence Agent ---
 intelligence_agent = Agent(
     name="nexus_intel",
     model="gemini-3-flash-preview",
@@ -35,6 +33,7 @@ intelligence_agent = Agent(
     tools=[nexus_briefing, nexus_ship_status, nexus_dossier, nexus_stats],
 )
 
+# --- Discovery Agent ---
 discovery_agent = Agent(
     name="nexus_discovery",
     model="gemini-3-flash-preview",
@@ -58,7 +57,8 @@ discovery_agent = Agent(
     ],
 )
 
-manager_agent = Agent(
+# --- Root Manager Agent ---
+root_agent = Agent(
     name="nexus_manager",
     model="gemini-3-flash-preview",
     description="The Nexus Central Commander.",
@@ -75,8 +75,4 @@ manager_agent = Agent(
     """,
     tools=[nexus_log, nexus_ingest, nexus_people_tag],
     sub_agents=[intelligence_agent, discovery_agent],
-)
-
-app = App(
-    name="nexus_intelligence_hub", root_agent=manager_agent, plugins=[LoggingPlugin()]
 )
