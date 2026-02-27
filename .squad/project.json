@@ -1,0 +1,12 @@
+{
+  "project_name": "new-project",
+  "mission": "deploy this agent as a gemini enterprise webinterface agent for the gemini enterprise webitner face https://vertexaisearch.cloud.google.com/us/home/cid/74934e12-7960-462b-a548-72a31a17e03b?hl=en_US   follow the plan.md",
+  "status": "active",
+  "version": "0.1.0",
+  "current_phase": "init",
+  "artifacts": {
+    "design_doc": "",
+    "tests": [],
+    "source_code": []
+  }
+}
